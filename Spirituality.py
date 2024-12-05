@@ -116,7 +116,7 @@ thought_placeholder.write(random_thought)
 # Remove the immediate generation trigger
 inspiration_themes = st.selectbox(
     "Select a theme to receive a new inspirational message.",
-    ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
+    ["Strong", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
      "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
      "Growth", "Generosity", "Resilience"],
     key="inspiration_theme_selector"  # Add a unique key to prevent rerunning
