@@ -112,23 +112,29 @@ thought_placeholder.write(random_thought)
 #         inspired_thought = get_thought_by_theme(inspiration_themes)
 #         thought_placeholder.write(inspired_thought)
 
-## Part 2 Get Inspired
-inspiration_themes = st.selectbox("Select a theme to receive a new inspirational message.",
-                                  ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
-                         "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
-                         "Growth", "Generosity", "Resilience"])
+# Part 2 Get Inspired
+# Remove the immediate generation trigger
+inspiration_themes = st.selectbox(
+    "Select a theme to receive a new inspirational message.",
+    ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
+     "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
+     "Growth", "Generosity", "Resilience"],
+    key="inspiration_theme_selector"  # Add a unique key to prevent rerunning
+)
 
-if st.button("Get Inspired"):
-    if inspiration_themes:
-        # Approach 1: Using placeholders to manage content
-        # Clear the existing thought and show a spinner
-        thought_placeholder.empty()
-        with st.spinner('Generating new thought...'):
-            # Perform the thought generation
-            inspired_thought = get_thought_by_theme([inspiration_themes])
+# Create a placeholder for the thought before the button
+thought_placeholder = st.empty()
 
-        # Update with the new thought
-        thought_placeholder.write(inspired_thought)
+# Add a state variable to track whether to show the thought
+show_thought = st.button("Get Inspired")
+
+if show_thought:
+    with st.spinner('Generating new thought...'):
+        # Only generate when the button is clicked
+        inspired_thought = get_thought_by_theme([inspiration_themes])
+
+    # Update the placeholder with the new thought
+    thought_placeholder.write(inspired_thought)
 
 # Part 3: Religious Beliefs Specific Content
 st.header("Personalized Spiritual Content")
