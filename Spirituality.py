@@ -96,38 +96,21 @@ st.write(
 
 # Part 1: Random Thought of the Day
 st.header("Thought of the Day")
-random_thought = get_thought_of_day()
+if 'initial_thought' not in st.session_state:
+    st.session_state.initial_thought = get_thought_of_day()
+
+# Create a placeholder for thoughts
 thought_placeholder = st.empty()
-thought_placeholder.write(random_thought)
+thought_placeholder.write(st.session_state.initial_thought)
 
-# Part 2 Get Inspired
-# st.header("Get Inspired")
-# st.write("Select a theme to receive a new inspirational message.")
-# inspiration_themes = st.selectbox("Select a theme to receive a new inspirational message.",
-#                                   ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom",
-#                                    "Joy", "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose",
-#                                    "Healing", "Unity", "Growth", "Generosity", "Resilience"])
-# if st.button("Get Inspired"):
-#     if inspiration_themes:
-#         inspired_thought = get_thought_by_theme(inspiration_themes)
-#         thought_placeholder.write(inspired_thought)
-
-# Part 2 Get Inspired
+# Part 2: Get Inspired
 inspiration_themes = st.selectbox(
     "Select a theme to receive a new inspirational message.",
     ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
      "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
      "Growth", "Generosity", "Resilience"],
-    key="inspiration_theme_selector"  # Add a unique key to prevent rerunning
+    key="inspiration_theme_selector"
 )
-
-# Existing thought placeholder
-if 'current_thought' not in st.session_state:
-    st.session_state.current_thought = random_thought
-
-# Display current thought
-thought_placeholder = st.empty()
-thought_placeholder.write(st.session_state.current_thought)
 
 if st.button("Get Inspired"):
     # Clear the existing thought
@@ -136,10 +119,10 @@ if st.button("Get Inspired"):
     # Show spinner
     with st.spinner('Generating new thought...'):
         # Generate new thought based on selected theme
-        st.session_state.current_thought = get_thought_by_theme([inspiration_themes])
+        new_themed_thought = get_thought_by_theme([inspiration_themes])
 
     # Update with new thought
-    thought_placeholder.write(st.session_state.current_thought)
+    thought_placeholder.write(new_themed_thought)
 
 # Part 3: Religious Beliefs Specific Content
 st.header("Personalized Spiritual Content")
