@@ -103,13 +103,28 @@ thought_placeholder.write(random_thought)
 # Part 2 Get Inspired
 # st.header("Get Inspired")
 # st.write("Select a theme to receive a new inspirational message.")
+# inspiration_themes = st.selectbox("Select a theme to receive a new inspirational message.",
+#                                   ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom",
+#                                    "Joy", "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose",
+#                                    "Healing", "Unity", "Growth", "Generosity", "Resilience"])
+# if st.button("Get Inspired"):
+#     if inspiration_themes:
+#         inspired_thought = get_thought_by_theme(inspiration_themes)
+#         thought_placeholder.write(inspired_thought)
+
+# Part 2 Get Inspired
 inspiration_themes = st.selectbox("Select a theme to receive a new inspirational message.",
-                                  ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom",
-                                   "Joy", "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose",
-                                   "Healing", "Unity", "Growth", "Generosity", "Resilience"])
+                                  ["Strength", "Gratitude", "Forgiveness", ...])
 if st.button("Get Inspired"):
     if inspiration_themes:
-        inspired_thought = get_thought_by_theme(inspiration_themes)
+        # Clear existing thought
+        thought_placeholder.empty()
+
+        # Show spinner
+        with st.spinner('Generating new thought...'):
+            inspired_thought = get_thought_by_theme(inspiration_themes)
+
+        # Update placeholder with new thought
         thought_placeholder.write(inspired_thought)
 
 # Part 3: Religious Beliefs Specific Content
