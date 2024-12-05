@@ -106,7 +106,7 @@ thought_placeholder.write(st.session_state.initial_thought)
 # Part 2: Get Inspired
 inspiration_themes = st.selectbox(
     "Select a theme to receive a new inspirational message.",
-    ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
+    ["Strengt", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
      "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
      "Growth", "Generosity", "Resilience"],
     key="inspiration_theme_selector"
