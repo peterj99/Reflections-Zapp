@@ -113,28 +113,33 @@ thought_placeholder.write(random_thought)
 #         thought_placeholder.write(inspired_thought)
 
 # Part 2 Get Inspired
-# Remove the immediate generation trigger
 inspiration_themes = st.selectbox(
     "Select a theme to receive a new inspirational message.",
-    ["Strong", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
+    ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
      "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
      "Growth", "Generosity", "Resilience"],
     key="inspiration_theme_selector"  # Add a unique key to prevent rerunning
 )
 
-# Create a placeholder for the thought before the button
+# Existing thought placeholder
+if 'current_thought' not in st.session_state:
+    st.session_state.current_thought = random_thought
+
+# Display current thought
 thought_placeholder = st.empty()
+thought_placeholder.write(st.session_state.current_thought)
 
-# Add a state variable to track whether to show the thought
-show_thought = st.button("Get Inspired")
+if st.button("Get Inspired"):
+    # Clear the existing thought
+    thought_placeholder.empty()
 
-if show_thought:
+    # Show spinner
     with st.spinner('Generating new thought...'):
-        # Only generate when the button is clicked
-        inspired_thought = get_thought_by_theme([inspiration_themes])
+        # Generate new thought based on selected theme
+        st.session_state.current_thought = get_thought_by_theme([inspiration_themes])
 
-    # Update the placeholder with the new thought
-    thought_placeholder.write(inspired_thought)
+    # Update with new thought
+    thought_placeholder.write(st.session_state.current_thought)
 
 # Part 3: Religious Beliefs Specific Content
 st.header("Personalized Spiritual Content")
