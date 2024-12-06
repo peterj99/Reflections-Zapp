@@ -70,7 +70,7 @@ thought_placeholder.markdown(f"<h3>{random_thought}</h2>", unsafe_allow_html=Tru
 
 # Part 2: Get Inspired
 inspiration_themes = st.selectbox(
-    "Select a theme to receive a new inspirational message.",
+    "Select a theme to receive a new inspirational message.(this can be changed to user's moods)",
     ["Strength", "Gratitude", "Forgiveness", "Love", "Hope", "Peace", "Courage", "Wisdom", "Joy",
      "Patience", "Humility", "Compassion", "Faith", "Mindfulness", "Purpose", "Healing", "Unity",
      "Growth", "Generosity", "Resilience"],
