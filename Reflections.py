@@ -66,7 +66,7 @@ st.write(
 
 random_thought = get_thought_of_day()
 thought_placeholder = st.empty()
-thought_placeholder.markdown(f"<h3>{random_thought}</h2>", unsafe_allow_html=True)
+thought_placeholder.markdown(f"<h3>{random_thought}</h3>", unsafe_allow_html=True)
 
 # Part 2: Get Inspired
 inspiration_themes = st.selectbox(
@@ -81,7 +81,7 @@ inspiration_themes = st.selectbox(
 if 'current_thought' not in st.session_state:
     st.session_state.current_thought = random_thought
 
-thought_placeholder.markdown(f"<h3>{st.session_state.current_thought}</h2>", unsafe_allow_html=True)
+thought_placeholder.markdown(f"<h3>{st.session_state.current_thought}</h3>", unsafe_allow_html=True)
 
 if st.button("Get New Reflection"):
     # Clear the existing thought
