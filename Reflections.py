@@ -93,4 +93,4 @@ if st.button("Get New Reflection"):
         st.session_state.current_thought = get_thought_by_theme([inspiration_themes])
 
     # Update with new thought
-    thought_placeholder.write(st.session_state.current_thought)
+    thought_placeholder.markdown(f"<h3>{st.session_state.current_thought}</h3>", unsafe_allow_html=True)
