@@ -192,7 +192,7 @@ class SoulfulReflectionsApp:
         # App Title and Introduction
         st.title("Soulful Reflections")
 
-        st.write("Hey! I'm here to brighten your day. Share how you're feeling, and I'll provide personalized reflections based on your mood."
+        st.write("Hey! I'm here to brighten your day. Share how you are feeling, and I'll provide personalized reflections based on your mood."
         )
 
         # Mood Selection
