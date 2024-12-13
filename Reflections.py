@@ -2,11 +2,9 @@ import google.generativeai as genai
 import streamlit as st
 import json
 import os
-from dotenv import load_dotenv
-from datetime import datetime
+#from dotenv import load_dotenv
+#from datetime import datetime
 
-# Load environment variables for local
-#
 
 # For production
 api_key = st.secrets["GEMINI_API_KEY"]
@@ -193,10 +191,8 @@ class SoulfulReflectionsApp:
         """Main app rendering method"""
         # App Title and Introduction
         st.title("Soulful Reflections")
-        st.write(
-            "We help make your day better by providing personalized inspiration "
-            "and guidance. Choose your current mood so that we can give a "
-            "reflection for you."
+
+        st.subheader("Hey! I'm here to brighten your day. Share how you're feeling, and I'll provide personalized reflections based on your mood."
         )
 
         # Mood Selection
